@@ -9,8 +9,9 @@ class App extends React.Component{
   constructor(){
     super();
     this.state={
-      sixdayforecast:"",
       myLocation:"",
+      sixdayforecast:"",
+      weatherIcons: ""
     }
   }
 
@@ -20,6 +21,7 @@ class App extends React.Component{
     .then(testDataArray => this.setState({
       sixdayforecast: testDataArray
       },()=>{
+        this.getWeatherIcons();
         this.getGeoLocation();
       })
     )
@@ -37,6 +39,7 @@ class App extends React.Component{
         })
       
     }
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else { 
@@ -59,15 +62,31 @@ class App extends React.Component{
     .then(response => response.json())
     .then(myLocalWeatherArray => this.setState({
       sixdayforecast: myLocalWeatherArray
-    }))
+    },()=>{
+      this.getWeatherIcons();
+    })
+    )
     .catch(err => console.log(`There was a problem with the fetch: ${err}`))
 
+  }
+
+  getWeatherIcons = () => {
+
+    let iconArray = [];
+
+    this.state.sixdayforecast.consolidated_weather.map(eachDay=>{
+     iconArray.push(`https://www.metaweather.com/static/img/weather/png/${eachDay.weather_state_abbr}.png`)
+    })
+
+    this.setState({
+      weatherIcons: iconArray
+    })
   }
 
   render(){
     return(
       <div>
-        <WeatherContainer weather={this.state.sixdayforecast}/>
+        <WeatherContainer weather={this.state.sixdayforecast} icons={this.state.weatherIcons}/>
       </div>
     )
   }
