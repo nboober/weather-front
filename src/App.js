@@ -56,7 +56,9 @@ class App extends React.Component{
       })
     })
     .then(response => response.json())
-    .then(myLocalWeatherArray => console.log(myLocalWeatherArray))
+    .then(myLocalWeatherArray => this.setState({
+      sixdayforecast: myLocalWeatherArray
+    }))
     .catch(err => console.log(`There was a problem with the fetch: ${err}`))
 
   }
