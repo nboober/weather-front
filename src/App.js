@@ -1,4 +1,5 @@
 import React from 'react';
+import WeatherContainer from './containers/WeatherContainer'
 import './App.css';
 // meta weather images
 // `https://www.metaweather.com/static/img/weather/png/${eachDay.weather_state_abbr}.png`
@@ -66,7 +67,7 @@ class App extends React.Component{
   render(){
     return(
       <div>
-        Hello
+        <WeatherContainer weather={this.state.sixdayforecast}/>
       </div>
     )
   }
