@@ -81,6 +81,18 @@ class App extends React.Component{
 
   search = (searchTerm) => {
     console.log(searchTerm)
+    fetch('http://localhost:3000/search',{
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json'
+      },
+      body: JSON.stringify({
+        term: searchTerm
+      })
+    })
+    .then(response => response.json())
+    .then(searchedArea => console.log(searchedArea))
   }
 
   render(){
