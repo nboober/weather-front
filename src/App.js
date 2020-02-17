@@ -1,9 +1,6 @@
 import React from 'react';
 import WeatherContainer from './containers/WeatherContainer'
 import './App.css';
-// meta weather images
-// `https://www.metaweather.com/static/img/weather/png/${eachDay.weather_state_abbr}.png`
-
 
 class App extends React.Component{
   constructor(){
@@ -29,8 +26,6 @@ class App extends React.Component{
 
   getGeoLocation = () => {
     const showPosition = (position) => {
-      // console.log(position.coords.latitude);
-      // console.log(position.coords.longitude);
         
         this.setState({
           myLocation: `${position.coords.latitude},${position.coords.longitude}`
