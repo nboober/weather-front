@@ -33,6 +33,7 @@ class Day extends React.Component{
     render(){
         return(
             <div style={{display: "inline-block", margin: "20px"}} >
+
                 <img src={this.props.icon} width="50px" height="50px" alt="weather icon" />
                 <p>{this.props.day.applicable_date}</p>
                 <p>Current-Temp: {this.state.farTemps[2]}°F</p>
@@ -44,6 +45,7 @@ class Day extends React.Component{
                     <p>Humidity: {this.props.day.humidity}%</p>
                     <p>Wind Speed: {Math.round(this.props.day.wind_speed)}</p>
                 </div>
+                
             </div>
         )
     }
