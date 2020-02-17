@@ -1,5 +1,6 @@
 import React from 'react';
 import WeatherContainer from './containers/WeatherContainer'
+import Search from './children/Search'
 import './App.css';
 
 class App extends React.Component{
@@ -78,9 +79,14 @@ class App extends React.Component{
     })
   }
 
+  search = (searchTerm) => {
+    console.log(searchTerm)
+  }
+
   render(){
     return(
       <div>
+        <Search search={this.search}/>
         <WeatherContainer weather={this.state.sixdayforecast} icons={this.state.weatherIcons}/>
       </div>
     )
